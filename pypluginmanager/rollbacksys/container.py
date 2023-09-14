@@ -1,5 +1,5 @@
-from rollbacksys.maintainer import Action
-from rollbacksys.maintainer import ActionPass
+from pypluginmanager.rollbacksys.maintainer import Action
+from pypluginmanager.rollbacksys.maintainer import ActionPass
 
 
 class ActionCon:
