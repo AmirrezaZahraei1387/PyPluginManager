@@ -29,6 +29,3 @@ class CoreInterface:
         checker.checkExistence(config_path)
 
 
-
-
-
