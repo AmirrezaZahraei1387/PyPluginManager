@@ -8,7 +8,6 @@ PLUGIN_SAMPLE = {
     "auther": "",
     "auther-email": "",
     "url": "",
-    "error-report-email": "",
 
     "description": "",
     "keywords": "",
