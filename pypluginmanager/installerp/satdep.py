@@ -17,7 +17,7 @@ python_current_version = PyVersion(sys.version_info[0], sys.version_info[1], sys
 def install_package(package_name: str):
     INSTALL_STATE[4] = package_name
     result = subprocess.run(INSTALL_STATE, stdout=subprocess.PIPE)
-    return  {package_name:[result.returncode, result.stdout]}
+    return {package_name: [result.returncode, str(result.stdout)]}
 
 
 def satisfy_dep(package_names: list):
@@ -42,7 +42,10 @@ def check_python_version(version_expr: str):
         version_expr = version_expr.replace(v, v_expected.__repr__(), 1)
 
         version_expr = python_current_version.__repr__() + version_expr
-        return eval(version_expr)
-
+        n = eval(version_expr)
+        if not n:
+            warnings.warn("the plugin in path needs version " +
+                          version_expr + " of python but is going to be used by " + str(python_current_version))
     except AttributeError:
         return True
+

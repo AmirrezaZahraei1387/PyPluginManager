@@ -5,11 +5,14 @@ import pypluginmanager
 from pypluginmanager.interface.types import InterfaceTypes
 
 
-def interTypeW(path_config: str, path_repo: str, interface_type: InterfaceTypes):
+MANDATORY_PARA = ["name", "version", "python-version", "dependencies", "install-path"]
+
+
+def interTypeW(path_config: str, path_interface: str, interface_type: InterfaceTypes):
 
     with open(path_config, mode='r') as config_file:
         data = json.load(config_file)
-        data["interfaces"].update({path_repo: interface_type.name})
+        data["interfaces"].update({path_interface: interface_type.name})
 
     with open(path_config, mode='w') as file:
         json.dump(data, file, indent=4)
@@ -22,6 +25,11 @@ def checkVersion(path_config: str):
         return data["PyPluginManagerVersion"] == pypluginmanager.__version__, data["PyPluginManagerVersion"]
 
 
+def has_key(dict_: dict, key):
+    if key not in dict_:
+        raise KeyError("no "+str(key)+"exist")
+
+
 def checkExistence(path_config: str):
     with open(path_config, mode='r') as config_file:
         data = json.load(config_file)
@@ -32,3 +40,10 @@ def checkExistence(path_config: str):
 
     with open(path_config, mode='w') as file:
         json.dump(data, file, indent=4)
+
+
+def check_existance(data: dict, to_check: list):
+    for element in to_check:
+        has_key(data, element)
+
+
