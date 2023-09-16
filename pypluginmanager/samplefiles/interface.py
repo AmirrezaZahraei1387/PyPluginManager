@@ -5,9 +5,6 @@ PLUGIN_SAMPLE = {
 
     "name": "",
     "version": "",
-    "auther": "",
-    "auther-email": "",
-    "url": "",
 
     "description": "",
     "keywords": "",

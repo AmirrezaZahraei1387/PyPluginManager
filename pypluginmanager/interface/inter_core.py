@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 import warnings
@@ -16,7 +17,7 @@ class CoreInterface:
         self.__type = interface_type
 
         # saving the paths needed
-        self.__plugins_db = os.path.join(path_repo, "config/plugins.db")
+        self.__plugins_db = os.path.join(path_repo, "config/plugins.json")
         self.__plugins_dir = os.path.join(path_repo, "plugins")
 
         config_path = os.path.join(path_repo, "config/config.json")
@@ -27,5 +28,11 @@ class CoreInterface:
             warnings.warn("the repository in path " + path_repo + " needs version " +
                           v + " but is being opened with version " + pypluginmanager.__version__)
         checker.checkExistence(config_path)
+
+    def install(self, plugin_path):
+
+        with open(os.path.join(plugin_path, "plugin_config.json"), mode='r') as file:
+            data = json.load(file)
+
 
 

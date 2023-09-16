@@ -7,6 +7,7 @@ import subprocess
 from Vmanager import PyVersion
 import re
 
+
 INSTALL_STATE = [sys.executable, '-m', 'pip', 'install', 'name']
 python_current_version = PyVersion(sys.version_info[0], sys.version_info[1], sys.version_info[2])
 
@@ -33,6 +34,3 @@ def check_python_version(version_expr: str):
 
     except AttributeError:
         return True
-
-
-
