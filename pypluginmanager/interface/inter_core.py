@@ -40,7 +40,7 @@ class CoreInterface:
             installerp.check_python_version(data["python-version"])
             result_dep_install = installerp.satisfy_dep(data["dependencies"])
             data["dependencies"] = result_dep_install
-            full_installation_path = os.path.join(self.__plugins_dir, data["install-path"])
+            full_installation_path = os.path.join(self.__plugins_dir, data["repo-path"])
             shutil.copytree(plugin_path, full_installation_path)
 
             with open(self.__plugins_db, mode='r') as file_r:
@@ -50,6 +50,14 @@ class CoreInterface:
 
                 with open(self.__plugins_db, mode='w') as file_w:
                     json.dump(d, file_w, indent=6)
+
+    def name_exist(self, plugin_name: str):
+        with open(self.__plugins_db, mode='r') as file_r:
+            plugins = json.load(file_r)
+            return plugin_name in plugins
+
+    def uninstall(self, plugin_name):
+
 
 
 
