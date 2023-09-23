@@ -44,7 +44,7 @@ class CoreInterface:
             installerp.check_python_version(data["python-version"])
             result_dep_install = installerp.satisfy_dep(data["dependencies"])
             data["dependencies"] = result_dep_install
-            full_installation_path = os.path.join(self.__plugins_dir, data["repo-path"])
+            full_installation_path = os.path.join(self.__plugins_dir, data["install-path"])
 
             shutil.copytree(path, full_installation_path)
 
@@ -59,6 +59,7 @@ class CoreInterface:
     def plugin_exist(self, name: str):
         with open(self.__plugins_db, mode='r') as file_r:
             plugins = json.load(file_r)
+
             for name_ in plugins:
                 if name == name_:
                     return True
@@ -71,9 +72,20 @@ class CoreInterface:
             if not self.plugin_exist(name):
                 raise exps.PluginNotFoundError("the plugin specified to be deleted does not exist.")
 
-            path = os.path.join(self.__plugins_dir, plugins[name]["repo-path"])
+            path = os.path.join(self.__plugins_dir, plugins[name]["install-path"])
             del plugins[name]
             shutil.rmtree(path)
+
+            with open(self.__plugins_db, mode='w') as file_w:
+                json.dump(plugins, file_w, indent=6)
+
+
+m = CoreInterface("Sample-Repo", InterfaceTypes.FULL_ACCESS)
+m.install("plugin")
+m.uninstall("Ali")
+
+
+
 
 
 
