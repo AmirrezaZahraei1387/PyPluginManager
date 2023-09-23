@@ -79,10 +79,26 @@ class CoreInterface:
             with open(self.__plugins_db, mode='w') as file_w:
                 json.dump(plugins, file_w, indent=6)
 
+    def get_version(self, name):
+        with open(self.__plugins_db, mode='r') as file_r:
+            plugins = json.load(file_r)
+            return plugins[name]["version"]
 
-m = CoreInterface("Sample-Repo", InterfaceTypes.FULL_ACCESS)
-m.install("plugin")
-m.uninstall("Ali")
+    def get_plugins(self):
+        with open(self.__plugins_db, mode='r') as file_r:
+            plugins = json.load(file_r)
+            data = {}
+            for name in plugins:
+                data.update({name: plugins[name]["version"]})
+            return data
+
+    def get_db(self):
+        """it is returns a read only IO object to the caller.
+        it allows to do high levels of tasks such as searching for
+        plugins"""
+        file_r = open(self.__plugins_db, mode='r')
+        return file_r
+
 
 
 
