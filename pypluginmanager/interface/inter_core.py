@@ -50,3 +50,6 @@ class CoreInterface:
 
                 with open(self.__plugins_db, mode='w') as file_w:
                     json.dump(d, file_w, indent=6)
+
+
+
