@@ -3,8 +3,8 @@ creating the different sort interfaces with their special
 access specifier.
 """
 
-from pypluginmanager.interface.inter_core import CoreInterface
-from pypluginmanager.interface.types import InterfaceTypes
+from pypluginmanager.interface import CoreInterface
+from pypluginmanager.interface import InterfaceTypes
 
 
 # full access

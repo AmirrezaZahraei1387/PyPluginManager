@@ -2,7 +2,7 @@ import json
 import os
 
 import pypluginmanager
-from pypluginmanager.interface.types import InterfaceTypes
+from pypluginmanager.interface import InterfaceTypes
 
 
 MANDATORY_PARA = ["name", "version", "python-version", "dependencies", "install-path"]
@@ -42,7 +42,7 @@ def checkExistence(path_config: str):
         json.dump(data, file, indent=4)
 
 
-def check_existance(data: dict, to_check: list):
+def check_existance_l(data: dict, to_check: list):
     for element in to_check:
         has_key(data, element)
 

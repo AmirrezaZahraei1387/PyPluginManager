@@ -5,9 +5,9 @@ import sys
 import warnings
 
 import pypluginmanager
-from pypluginmanager.interface.types import InterfaceTypes
+from pypluginmanager.interface import InterfaceTypes
 from pypluginmanager.interface import checker
-import pypluginmanager.installerp as installerp
+import pypluginmanager.installerp as inp
 import pypluginmanager.exceptions as exps
 
 
@@ -35,14 +35,14 @@ class CoreInterface:
 
         with open(os.path.join(path, "plugin_config.json"), mode='r') as file:
             data = json.load(file)
-            checker.check_existance(data, checker.MANDATORY_PARA)
+            checker.check_existance_l(data, checker.MANDATORY_PARA)
 
             if self.plugin_exist(data["name"]):
                 raise exps.PluginFoundError("the plugin requested to be installed already"
                                             "exist")
 
-            installerp.check_python_version(data["python-version"])
-            result_dep_install = installerp.satisfy_dep(data["dependencies"])
+            inp.check_python_version(data["python-version"])
+            result_dep_install = inp.satisfy_dep(data["dependencies"])
             data["dependencies"] = result_dep_install
             full_installation_path = os.path.join(self.__plugins_dir, data["install-path"])
 
