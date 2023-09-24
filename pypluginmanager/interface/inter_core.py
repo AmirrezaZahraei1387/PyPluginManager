@@ -92,6 +92,11 @@ class CoreInterface:
                 data.update({name: plugins[name]["version"]})
             return data
 
+    def load(self, name):
+        with open(self.__plugins_db, mode='r') as file_r:
+            data = json.load(file_r)
+            return os.path.join(self.__plugins_db, data[name]["install-path"])
+
     def get_db(self):
         """it is returns a read only IO object to the caller.
         it allows to do high levels of tasks such as searching for
