@@ -1,9 +1,8 @@
 import json
 import os
 
-import pypluginmanager
-from pypluginmanager.interface import InterfaceTypes
-
+from pypluginmanager import InterfaceTypes
+from pypluginmanager import __version__
 
 MANDATORY_PARA = ["name", "version", "python-version", "dependencies", "install-path"]
 
@@ -22,7 +21,7 @@ def checkVersion(path_config: str):
 
     with open(path_config, mode='r') as config_file:
         data = json.load(config_file)
-        return data["PyPluginManagerVersion"] == pypluginmanager.__version__, data["PyPluginManagerVersion"]
+        return data["PyPluginManagerVersion"] == __version__, data["PyPluginManagerVersion"]
 
 
 def has_key(dict_: dict, key):

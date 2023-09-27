@@ -5,10 +5,10 @@ import sys
 import warnings
 
 import pypluginmanager
-from pypluginmanager.interface import InterfaceTypes
+from pypluginmanager import InterfaceTypes
 from pypluginmanager.interface import checker
-import pypluginmanager.installerp as inp
-import pypluginmanager.exceptions as exps
+from pypluginmanager import inp
+from pypluginmanager import exps
 
 
 class CoreInterface:

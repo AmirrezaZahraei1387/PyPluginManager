@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: pmlion
+Version: 0.1
+Summary: A cross platform tool for managing the plugins of applications.
+Home-page: https://github.com/AmirrezaZahraei1387/PyPluginManager
+Author: Amirreza Zahraei
+Author-email: amir.reza.zahraei@gmail.com
+License: MIT
+Keywords: Windows linux Plugin PluginManager Library LibraryManager BuildTool
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Natural Language :: English
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.7
+License-File: LICENSE
+
+UNKNOWN
+
