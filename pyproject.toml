@@ -1,5 +1,7 @@
 [project]
 name =  "pmlion"
+version = "0.1"
+
 authors = [
     {name = "Amirreza Zahraei", email = "amir.reza.zahraei@gmail.com"},
 ]
@@ -21,7 +23,7 @@ classifiers = [
 ]
 
 requires-python = ">=3.0.0"
-dynamic = ["0.1"]
+
 
 dependencies = [
     'Vmanager'
